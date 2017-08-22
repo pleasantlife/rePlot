@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.android.fastcampus.kwave.plot.SignUpActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="회원 가입"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_weight="1"
+            android:text="Email"
+            android:gravity="center"
+            android:layout_width="50dp"
+            android:layout_height="match_parent" />
+        <EditText
+            android:id="@+id/signUpEmail"
+            android:layout_weight="3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_weight="1"
+            android:text="nickname"
+            android:gravity="center"
+            android:layout_width="50dp"
+            android:layout_height="match_parent" />
+        <EditText
+            android:id="@+id/signUpNickname"
+            android:layout_weight="3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_weight="1"
+            android:text="username"
+            android:gravity="center"
+            android:layout_width="50dp"
+            android:layout_height="match_parent" />
+        <EditText
+            android:id="@+id/signUpUsername"
+            android:layout_weight="3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_weight="1"
+            android:text="password"
+            android:gravity="center"
+            android:layout_width="50dp"
+            android:layout_height="match_parent" />
+        <EditText
+            android:id="@+id/signUpPassword"
+            android:layout_weight="3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_weight="1"
+            android:text="password확인"
+            android:gravity="center"
+            android:layout_width="50dp"
+            android:layout_height="match_parent" />
+        <EditText
+            android:id="@+id/signUpCheckPassword"
+            android:layout_weight="3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+<Button
+    android:id="@+id/signUpSaveButton"
+    android:text="저장"
+    android:layout_gravity="center"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/signUpCancelButton"
+        android:text="취소"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>
