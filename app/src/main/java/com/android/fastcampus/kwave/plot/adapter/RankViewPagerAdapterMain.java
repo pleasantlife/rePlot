@@ -26,5 +26,9 @@ public class RankViewPagerAdapterMain extends FragmentStatePagerAdapter {
         return 5;  // 총 5개의 page를 보여줍니다.
     }
 
+    @Override
+    public int getItemPosition(Object object) {
+        return super.getItemPosition(object);
+    }
 }
 

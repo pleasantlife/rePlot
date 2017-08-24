@@ -63,7 +63,11 @@
                     android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
-
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/autoLogIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="자동 로그인"/>
             <Button
                 android:id="@+id/email_sign_in_button"
                 style="?android:textAppearanceSmall"

@@ -3,7 +3,7 @@
     <string name="action_settings">Settings</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
-    <string name="goNavi">NaviPage 보이기</string>
+    <string name="goNavi">Menu</string>
     <string name="UserNickName">UserNickName</string>
     <string name="home">HOME</string>
     <string name="mypage">MY PAGE</string>

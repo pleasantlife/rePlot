@@ -16,6 +16,7 @@ import com.android.fastcampus.kwave.plot.R;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -26,6 +27,7 @@ import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.Holder> {
     List<ServerData> data = new ArrayList<>();
+    String locationString = "";
 
     Context context = null;
     public void setData(List<ServerData> datas){
@@ -43,15 +45,17 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.Holder> {
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
-
         ServerData serverData = data.get(position);
         holder.setPosition(position);
         holder.title.setText(serverData.getPoster_title());
-        holder.location.setText(serverData.getLocation());
-        holder.period.setText(serverData.getDate_start());
+
+        setRegion(serverData);
+        holder.location.setText(locationString + " " + serverData.getPlace());
+        holder.startDate.setText(serverData.getDate_start());
+        holder.endDate.setText(serverData.getDate_end());
         Glide.with(context).load(data.get(position).getPoster_img()).into(holder.poster);
-            //Glide.with(context).load(datas.image).into(holder.poster);
-            //holder.ratingBar.setRating(datas.star);
+        //Glide.with(context).load(datas.image).into(holder.poster);
+        //holder.ratingBar.setRating(datas.star);
 
     }
 
@@ -62,8 +66,48 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.Holder> {
     }
 
 
+    private String setRegion(ServerData serverData){
+        switch(serverData.getLocation()){
+            case "seoul":
+                locationString = "서울특별시";
+                break;
+            case "jeju":
+                locationString = "제주특별자치도";
+                break;
+            case "gyeonggi":
+                locationString = "경기도";
+                break;
+            case "busan":
+                locationString = "부산광역시";
+                break;
+            case "jeollabuk":
+                locationString = "전라북도";
+                break;
+            case "gwangju":
+                locationString = "광주광역시";
+                break;
+            case "jeollanam":
+                locationString = "전라남도";
+                break;
+            case "gyeongsangbuk":
+                locationString = "경상북도";
+                break;
+            case "daegu":
+                locationString = "대구광역시";
+                break;
+            case "gangwon":
+                locationString = "강원도";
+                break;
+            case "gyeongsangnam":
+                locationString = "경상남도";
+                break;
+        }
+        return locationString;
+    }
+
+
     class Holder extends RecyclerView.ViewHolder{
-        TextView title, location, period;
+        TextView title, location, startDate, endDate;
         ImageView poster;
         RatingBar ratingBar;
         int position;
@@ -71,7 +115,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.Holder> {
             super(v);
             title = (TextView) v.findViewById(R.id.title);
             location = (TextView) v.findViewById(R.id.location);
-            period = (TextView) v.findViewById(R.id.period);
+            startDate = (TextView) v.findViewById(R.id.startDate);
+            endDate = (TextView) v.findViewById(R.id.endDate);
             poster = (ImageView) v.findViewById(R.id.poster);
             ratingBar = (RatingBar) v.findViewById(R.id.writeRatingBar);
             v.setOnClickListener(new View.OnClickListener() {

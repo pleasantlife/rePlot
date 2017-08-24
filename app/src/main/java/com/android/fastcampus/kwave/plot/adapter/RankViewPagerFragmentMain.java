@@ -10,6 +10,9 @@ import android.widget.ImageView;
 import com.android.fastcampus.kwave.plot.DataSource.Data;
 import com.android.fastcampus.kwave.plot.DataSource.ServerData;
 import com.android.fastcampus.kwave.plot.R;
+import com.bumptech.glide.Glide;
+
+import static com.android.fastcampus.kwave.plot.R.id.postImg;
 
 
 /**
@@ -42,7 +45,7 @@ public class RankViewPagerFragmentMain extends Fragment {
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.rank_fragment_main, container, false);
         rankBest = ((ImageView) rootView.findViewById(R.id.rankBest));
-        rankBest.setImageResource(datas.rankBestImage[mPageNumber]);
+        Glide.with(this).load(datas.rankBestImage[mPageNumber]).into(rankBest);
         return rootView;
     }
 }

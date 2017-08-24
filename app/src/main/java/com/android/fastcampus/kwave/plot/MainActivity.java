@@ -34,6 +34,7 @@ import android.widget.Toast;
 import com.android.fastcampus.kwave.plot.DataSource.ExpandableListDataSource;
 import com.android.fastcampus.kwave.plot.DataSource.ServerData;
 import com.android.fastcampus.kwave.plot.adapter.CustomExpandableListAdapter;
+import com.android.fastcampus.kwave.plot.adapter.ListAdapter;
 import com.android.fastcampus.kwave.plot.adapter.RankRecyclerAdapterMain;
 import com.android.fastcampus.kwave.plot.adapter.RankViewPagerAdapterMain;
 import com.android.fastcampus.kwave.plot.navigation.FragmentNavigationManager;
@@ -46,6 +47,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
+import static com.android.fastcampus.kwave.plot.R.id.recycler;
 import static com.android.fastcampus.kwave.plot.ThrowData2Activity.task;
 import static com.android.fastcampus.kwave.plot.Util.LoginCode.LOGIN_OK;
 import static com.android.fastcampus.kwave.plot.Util.LoginCode.REQUEST_CODE;
@@ -157,10 +159,10 @@ public class MainActivity extends AppCompatActivity implements NaviDrawerSetting
     private void setRecyclerView() {
 
         // RecyclerView Setting
-        rankRecyclerAdapterMain = new RankRecyclerAdapterMain(datas, this);
+        rankRecyclerAdapterMain = new RankRecyclerAdapterMain();
+        rankRecyclerAdapterMain.setData(datas);
         rankRecycler_main.setAdapter(rankRecyclerAdapterMain);
         rankRecycler_main.setLayoutManager(new LinearLayoutManager(this));
-//        rankRecyclerAdapterMain.setData(datas);
     }
 
 
@@ -333,7 +335,7 @@ public class MainActivity extends AppCompatActivity implements NaviDrawerSetting
                 startActivity(intent);
                 break;
             case R.id.textMypage:
-                if (REQUEST_CODE == LOGIN_OK) {
+                if ((REQUEST_CODE == LOGIN_OK) ||(userPassword != null)){
                     intent = new Intent(MainActivity.this, ProfileActivity.class);
                     startActivity(intent);
                 } else {
@@ -371,9 +373,9 @@ public class MainActivity extends AppCompatActivity implements NaviDrawerSetting
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) {
-                    Toast.makeText(getApplicationContext(), genre.getItem(position) + Integer.toString(position), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), genre.getItem(position) + Integer.toString(position), Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), genre.getItem(position) + Integer.toString(position), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), genre.getItem(position) + Integer.toString(position), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, com.android.fastcampus.kwave.plot.ListActivity.class);
                     startActivity(intent);
                 }
@@ -392,10 +394,10 @@ public class MainActivity extends AppCompatActivity implements NaviDrawerSetting
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) {
-                    Toast.makeText(getApplicationContext(), location.getItem(position) + Integer.toString(position), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), location.getItem(position) + Integer.toString(position), Toast.LENGTH_SHORT).show();
 
                 } else {
-                    Toast.makeText(getApplicationContext(), location.getItem(position) + Integer.toString(position), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), location.getItem(position) + Integer.toString(position), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, com.android.fastcampus.kwave.plot.ListActivity.class);
                     startActivity(intent);
                 }

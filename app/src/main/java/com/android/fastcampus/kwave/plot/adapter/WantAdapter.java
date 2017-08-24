@@ -40,13 +40,13 @@ public class WantAdapter extends RecyclerView.Adapter<WantAdapter.Holder> {
     }
 
     @Override
-    public void onBindViewHolder(WantAdapter.Holder holder, int position) {
+    public void onBindViewHolder(Holder holder, int position) {
 
         ServerData serverData = data.get(position);
         holder.setPosition(position);
         holder.title.setText(serverData.getPoster_title());
         holder.location.setText(serverData.getLocation());
-        holder.period.setText(serverData.getDate_start());
+        holder.startDate.setText(serverData.getDate_start());
         //Glide.with(context).load(datas.image).into(holder.poster);
         //holder.ratingBar.setRating(datas.star);
 
@@ -60,7 +60,7 @@ public class WantAdapter extends RecyclerView.Adapter<WantAdapter.Holder> {
 
 
     class Holder extends RecyclerView.ViewHolder{
-        TextView title, location, period;
+        TextView title, location, startDate;
         ImageView poster;
         RatingBar ratingBar;
         int position;
@@ -68,7 +68,7 @@ public class WantAdapter extends RecyclerView.Adapter<WantAdapter.Holder> {
             super(v);
             title = (TextView) v.findViewById(R.id.title);
             location = (TextView) v.findViewById(R.id.location);
-            period = (TextView) v.findViewById(R.id.period);
+            startDate = (TextView) v.findViewById(R.id.startDate);
             poster = (ImageView) v.findViewById(R.id.poster);
             ratingBar = (RatingBar) v.findViewById(R.id.writeRatingBar);
             v.setOnClickListener(new View.OnClickListener() {

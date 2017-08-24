@@ -6,17 +6,19 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
+
 /**
  * Created by kwave on 2017-08-16.
  */
 
 public class SignUpRequest extends StringRequest {
 
-    final static private String URL = "http://plot.ejjeong.com/api/member/signup/";
+    final static private String signUpURL = "http://plot.ejjeong.com/api/member/signup/";
     private Map<String, String> parameters;
 
     public SignUpRequest(String userEmail, String userNickName, String userName, String userPassword, String passwordCheck, Response.Listener<String> listener) {
-        super(Method.POST, URL, listener, null);
+        super(Method.POST, signUpURL, listener, null);
         parameters = new HashMap<>();
         parameters.put("email", userEmail);
         parameters.put("nickname", userNickName);

@@ -31,15 +31,20 @@ public class Data {
      * 메인 페이지의 랭킹 Best 이미지 자료
      */
     public Integer[] rankBestImage = {
-            R.drawable.irene,
-            R.drawable.dahyun,
-            R.drawable.yein1,
-            R.drawable.jisu,
-            R.drawable.chorong,
-            R.drawable.irene1,
-            R.drawable.bomi,
-            R.drawable.yein,
-            R.drawable.sana,
-            R.drawable.taeyeon,
+//            R.drawable.irene,
+//            R.drawable.dahyun,
+//            R.drawable.yein1,
+//            R.drawable.jisu,
+//            R.drawable.chorong,
+//            R.drawable.irene1,
+//            R.drawable.bomi,
+//            R.drawable.yein,
+//            R.drawable.sana,
+//            R.drawable.taeyeon,
+            R.drawable.poster1,
+            R.drawable.poster2,
+            R.drawable.poster3,
+            R.drawable.poster4,
+            R.drawable.poster5
     };
 }

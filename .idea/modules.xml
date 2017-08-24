@@ -5,7 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/PLOT.iml" filepath="$PROJECT_DIR$/PLOT.iml" />
       <module fileurl="file://$PROJECT_DIR$/PLOT-develop.iml" filepath="$PROJECT_DIR$/PLOT-develop.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rePlot.iml" filepath="$PROJECT_DIR$/rePlot.iml" />
     </modules>
   </component>
 </project>

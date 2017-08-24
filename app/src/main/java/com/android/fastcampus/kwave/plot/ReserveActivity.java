@@ -5,7 +5,6 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
@@ -14,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +32,11 @@ public class ReserveActivity extends AppCompatActivity implements View.OnClickLi
     String priceString;
     DatePickerDialog datePickerDialog;
 
+    String startDateString;
+    String endDateString;
+    long startDateLong = 0;
+    long endDateLong = 0;
+
 
     static int normalPrice, studentPrice, packagePrice, weekdayPrice, weekendPrice, resultPrice;
 
@@ -45,6 +48,7 @@ public class ReserveActivity extends AppCompatActivity implements View.OnClickLi
         adapter = new ArrayAdapter(getApplicationContext(), R.layout.layout_spinner_item, number);
 
         initView();
+//        startAndEndDate();
         setSpinnerAdapter(spinnerNormal);
         setSpinnerAdapter(spinnerStudent);
         setSpinnerAdapter(spinnerPackage);
@@ -56,42 +60,42 @@ public class ReserveActivity extends AppCompatActivity implements View.OnClickLi
     /*
      뷰 생성 (버튼 및 스피너, 텍스트 등)
      */
-   public void initView(){
-       spinnerNormal = (Spinner) findViewById(R.id.spinnerNormal);
-       spinnerStudent = (Spinner) findViewById(R.id.spinnerStudent);
-       spinnerPackage = (Spinner) findViewById(R.id.spinnerPackage);
-       spinnerWeekday = (Spinner) findViewById(R.id.spinnerWeekday);
-       spinnerWeekend = (Spinner) findViewById(R.id.spinnerWeekend);
+    public void initView(){
+        spinnerNormal = (Spinner) findViewById(R.id.spinnerNormal);
+        spinnerStudent = (Spinner) findViewById(R.id.spinnerStudent);
+        spinnerPackage = (Spinner) findViewById(R.id.spinnerPackage);
+        spinnerWeekday = (Spinner) findViewById(R.id.spinnerWeekday);
+        spinnerWeekend = (Spinner) findViewById(R.id.spinnerWeekend);
 
-       txtPriceResult = (TextView) findViewById(R.id.txtPriceResult);
-       txtTitle = (TextView) findViewById(R.id.txtTitle);
-       txtNormalPrice = (TextView) findViewById(R.id.txtNormalPrice);
-       txtViewDate = (TextView) findViewById(R.id.txtViewDate);
+        txtPriceResult = (TextView) findViewById(R.id.txtPriceResult);
+        txtTitle = (TextView) findViewById(R.id.txtTitle);
+        txtNormalPrice = (TextView) findViewById(R.id.txtNormalPrice);
+        txtViewDate = (TextView) findViewById(R.id.txtViewDate);
 
 
-       btnGoBuy = (Button) findViewById(R.id.btnGoBuy);
-       btnGoBuy.setOnClickListener(this);
+        btnGoBuy = (Button) findViewById(R.id.btnGoBuy);
+        btnGoBuy.setOnClickListener(this);
 
-       btnSetVisitDate = (Button) findViewById(R.id.btnSetDate);
-       btnSetVisitDate.setOnClickListener(this);
-       setTitle();
-       txtNormalPrice.setText(getPrice() + " 원");
-   }
+        btnSetVisitDate = (Button) findViewById(R.id.btnSetDate);
+        btnSetVisitDate.setOnClickListener(this);
+        setTitle();
+        txtNormalPrice.setText(getPrice() + " 원");
+    }
 
    /*
    스피너 사용을 위한 어댑터 구성
     */
 
-   public void setSpinnerAdapter(Spinner spinner){
-       spinner.setAdapter(adapter);
-       spinner.setOnItemSelectedListener(this);
-   }
+    public void setSpinnerAdapter(Spinner spinner){
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+    }
 
-   public String getPrice(){
-       Intent intent = getIntent();
-       priceString = intent.getStringExtra("Freeornot");
-       return priceString;
-   }
+    public String getPrice(){
+        Intent intent = getIntent();
+        priceString = intent.getStringExtra("Freeornot");
+        return priceString;
+    }
 
    /*
     1) 결제하기 버튼을 눌렀을 때 Toast 알림 메세지 띄움.
@@ -103,10 +107,10 @@ public class ReserveActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.btnGoBuy:
-                Toast.makeText(getBaseContext(), resultPrice + " 원 결제 되었습니다.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), resultPrice + " 원이 결제 됩니다.", Toast.LENGTH_SHORT).show();
 
 
-                setDate();
+
                 Intent intent = new Intent(ReserveActivity.this, PayActivity.class);
                 intent.putExtra("resultPrice", resultPrice);
                 //setNoti(resultPrice);
@@ -123,6 +127,10 @@ public class ReserveActivity extends AppCompatActivity implements View.OnClickLi
                 int getDate = Integer.parseInt(dateFormat.format(date));
 
                 datePickerDialog = new DatePickerDialog(this, listener, getYear, getMonth, getDate);
+                //getDatePicker().setMinDate(long타입 값)으로 전시시작일을 지정하고,
+                //getDatePicker().setMaxDate(long타입 값)으로 전시종료일을 지정한다.
+//                datePickerDialog.getDatePicker().setMinDate(startDateLong);
+//                datePickerDialog.getDatePicker().setMaxDate(endDateLong);
                 datePickerDialog.show();
         }
     }
@@ -175,19 +183,26 @@ public class ReserveActivity extends AppCompatActivity implements View.OnClickLi
 
 
     /*
-        전시 시작일을 받아올 함수. 현재는 전시 시작일 데이터가 넘어오지 않기 때문에,
-        임의로 8월 28일로 설정해두었음.
+        전시 시작일과 종료일을 String -> Date -> Long으로 3단 변환하는 함수.
+        DateFormat을 맞춘 후 long 값을 구해야 관람일 선택하기에서
+        전시 시작일~종료일 사이의 날짜만 선택하도록 DatePickerDialog의 범위 설정 가능.
      */
-    public void setDate(){
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.YEAR, 2017);
-        calendar.set(Calendar.MONTH, 8);
-        calendar.set(Calendar.DATE, 28);
-        calendar.set(Calendar.HOUR_OF_DAY, 12);
-        calendar.set(Calendar.MINUTE, 0);
-        date = (calendar.get(Calendar.MONTH)) + "월" + (calendar.get(Calendar.DATE)) + "일";
-
-    }
+//    public void startAndEndDate(){
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        Intent intent = getIntent();
+//        startDateString = intent.getStringExtra("StartDate");
+//        endDateString = intent.getStringExtra("EndDate");
+//        try {
+//            Date startDate = dateFormat.parse(startDateString);
+//            Date endDate = dateFormat.parse(endDateString);
+//            startDateLong = startDate.getTime();
+//            endDateLong = endDate.getTime();
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//
+//
+//    }
 
     /*
         노티피케이션을 생성하는 함수. setDate 함수를 통해 전시 시작일을 받아와서 노티에 나타나게 할 예정.
@@ -217,7 +232,7 @@ public class ReserveActivity extends AppCompatActivity implements View.OnClickLi
             calendar.set(Calendar.YEAR, year);
             calendar.set(Calendar.MONTH, month);
             calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            Toast.makeText(getBaseContext(), calendar+"", Toast.LENGTH_SHORT).show();
+
         }
     };
 

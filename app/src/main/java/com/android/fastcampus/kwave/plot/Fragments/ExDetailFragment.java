@@ -35,8 +35,8 @@ public class ExDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_ex_detail, container, false);
         explainText = (TextView) view.findViewById(ExplainText);
-        explainImg = (ImageView) view.findViewById(R.id.ExplainImg);
-        explainImg2 = (ImageView) view.findViewById(R.id.ExplainImg2);
+        explainImg = (ImageView) view.findViewById(R.id.explainImg);
+        explainImg2 = (ImageView) view.findViewById(R.id.explainImg2);
         explainText.setText(serverData.getPoster_title());
         
         Glide.with(container.getContext()).load(serverData.getThumbnail_img_1()).into(explainImg);

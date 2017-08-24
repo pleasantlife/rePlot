@@ -31,7 +31,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:text="전시 주관"
+            android:text="전시 장소"
             android:textAlignment="viewStart"
             android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -83,6 +83,14 @@
             app:layout_constraintLeft_toRightOf="@+id/textView5"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textTarget" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="원"
+            android:textSize="18sp" />
 
     </LinearLayout>
 

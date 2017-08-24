@@ -1,6 +1,7 @@
 package com.android.fastcampus.kwave.plot.adapter;
 
 import android.app.ListActivity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.android.fastcampus.kwave.plot.DataSource.Data;
 import com.android.fastcampus.kwave.plot.DataSource.ServerData;
 import com.android.fastcampus.kwave.plot.R;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +24,10 @@ import java.util.List;
  */
 
 public class FindRecyclerAdapterSearch extends RecyclerView.Adapter<FindRecyclerAdapterSearch.ViewHolder> {
+    List<ServerData> data = new ArrayList<>();
+    Context context = null;
 
-    private final List<ServerData> data;
-    private final List<Data> data1 = new ArrayList<>();
-
-    public FindRecyclerAdapterSearch(final List<ServerData> data) {
+    public void setData(List<ServerData> data){
         this.data = data;
     }
 
@@ -39,12 +40,11 @@ public class FindRecyclerAdapterSearch extends RecyclerView.Adapter<FindRecycler
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         ServerData serverData = data.get(position);
-        Data datas = data1.get(position);
-        holder.setTextTitle(serverData.getPoster_title());
-        holder.setTextDateEnd(serverData.getDate_end());
-        holder.setTextExhibition(serverData.getLocation());
-        holder.setImage(datas.rankBestImage[position*2]);
         holder.setPosition(position);
+        holder.textTitle_search.setText(serverData.getPoster_title());
+        holder.textDateEnd_search.setText(serverData.getDate_end());
+        holder.textExhibition_search.setText(serverData.getLocation());
+        Glide.with(context).load(data.get(position).getPoster_img()).into(holder.rankRecyclerViewImage_search);
     }
 
     @Override

@@ -1,66 +1,34 @@
 package com.android.fastcampus.kwave.plot;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
-import android.app.LoaderManager.LoaderCallbacks;
-import android.content.CursorLoader;
 import android.content.Intent;
-import android.content.Loader;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.util.Log;
-import android.util.Patterns;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.EditorInfo;
-import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.ScrollView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.fastcampus.kwave.plot.Util.LoginRequest;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
-import com.facebook.AccessToken;
-import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
 import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static android.Manifest.permission.READ_CONTACTS;
 import static com.android.fastcampus.kwave.plot.Util.LoginCode.LOGIN_OK;
 import static com.android.fastcampus.kwave.plot.Util.LoginCode.REQUEST_CODE;
 
@@ -105,7 +73,12 @@ public class LoginActivity extends AppCompatActivity {
 //    private Button emailSignInButton;
     private Button signUpButton;
     String success;
-
+    CheckBox auto_logIn;
+    SharedPreferences setting;
+    SharedPreferences.Editor editor;
+    String email = null;
+    String password = null;
+    String nickName = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,6 +92,9 @@ public class LoginActivity extends AppCompatActivity {
 //        loginProgress = (ProgressBar) findViewById(R.id.login_progress);
 //        loginForm = (ScrollView) findViewById(R.id.login_form);
 //        emailLoginForm = (LinearLayout) findViewById(R.id.email_login_form);
+        auto_logIn = (CheckBox) findViewById(R.id.autoLogIn);
+        setting = getSharedPreferences("setting", 0);
+        editor= setting.edit();
         final EditText emailText = (AutoCompleteTextView) findViewById(R.id.email);
         final EditText passwordText = (EditText) findViewById(R.id.password);
         final Button loginButton = (Button) findViewById(R.id.email_sign_in_button);
@@ -143,9 +119,9 @@ public class LoginActivity extends AppCompatActivity {
                                int success1 = jsonResponse.getInt("pk");
                                success = Integer.toString(success1);
                                if(success != null){
-                                   String email = jsonResponse.getString("pk");
-                                   String password = jsonResponse.getString("token");
-                                   String nickName = jsonResponse.getString("nick_name");
+                                   email = jsonResponse.getString("pk");
+                                   password = jsonResponse.getString("token");
+                                   nickName = jsonResponse.getString("nick_name");
                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                    intent.putExtra("pk",email);
                                    intent.putExtra("token",password);
@@ -185,6 +161,27 @@ public class LoginActivity extends AppCompatActivity {
         fbLoginProcess();
         /* 페이스북 로그인을 위한 버튼 및 함수 설정 끝 */
 
+        auto_logIn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if (isChecked) {
+                    String ID = emailText.getText().toString();
+                    String PW = passwordText.getText().toString();
+                    String token = password;
+                    editor.putString("ID", ID);
+                    editor.putString("PW", PW);
+                    editor.putString("token",token);
+                    editor.putString("nickName",nickName);
+                    editor.putBoolean("Auto_Login_enabled", true);
+                    editor.commit();
+
+                } else {
+                    editor.clear();
+                    editor.commit();
+                }
+            }
+        });
     }
 
 
