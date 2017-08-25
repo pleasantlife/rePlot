@@ -16,4 +16,4 @@
  - '관람평 남기기' 기능
  
 ## PLOT 작동 영상 
- <iframe width="560" height="315" src="https://www.youtube.com/embed/ERtfedOJ-H8" frameborder="0" allowfullscreen></iframe>
+ [linkname](https://www.youtube.com/embed/ERtfedOJ-H8)
