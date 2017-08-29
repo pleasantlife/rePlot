@@ -17,7 +17,7 @@
  
 ## PLOT 스크린샷
 
- ![Alt text](<img width="30%" height="30%">https://github.com/pleasantlife/rePlot/blob/master/PLOT_mainpage.png</img> "메인화면")
+ ![Alt text](https://github.com/pleasantlife/rePlot/blob/master/PLOT_mainpage.png "메인화면")
  
 ## PLOT 작동 영상 
  [linkname](https://www.youtube.com/embed/ERtfedOJ-H8)
