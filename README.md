@@ -15,5 +15,9 @@
  - '관람한 전시' 확인 기능
  - '관람평 남기기' 기능
  
+## PLOT 스크린샷
+
+ ![Alt text](https://github.com/pleasantlife/rePlot/blob/master/PLOT_mainpage.png "메인화면")
+ 
 ## PLOT 작동 영상 
  [linkname](https://www.youtube.com/embed/ERtfedOJ-H8)
