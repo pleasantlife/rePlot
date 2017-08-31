@@ -47,7 +47,7 @@
 
 ## PLOT 구동 영상
 
-  [![PLOT 구동 영상](https://github.com/pleasantlife/rePlot/blob/master/PLOT_mainpage.png)](https://www.youtube.com/watch?v=ERtfedOJ-H8)
+  [![PLOT 구동 영상](https://github.com/pleasantlife/rePlot/blob/master/capture.png)](https://www.youtube.com/watch?v=ERtfedOJ-H8)
   
  
   
