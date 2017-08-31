@@ -29,21 +29,15 @@
       
 ## 스크린 샷
 
-  <img src="https://github.com/pleasantlife/rePlot/blob/master/PLOT_login.png" width='216px' height='384px'/>
-  <img src="https://github.com/pleasantlife/rePlot/blob/master/PLOT_mainpage.png" width='216px' height='384px'/>
-  <img src="https://github.com/pleasantlife/rePlot/blob/master/PLOT_listpage.png" width='216px' height='384px'/>
+  <img src="https://github.com/pleasantlife/rePlot/blob/master/PLOT_login.png" width='216px' height='384px'/> <img src="https://github.com/pleasantlife/rePlot/blob/master/PLOT_mainpage.png" width='216px' height='384px'/> <img src="https://github.com/pleasantlife/rePlot/blob/master/PLOT_listpage.png" width='216px' height='384px'/>
   
   <br>
 
-  <img src="https://github.com/pleasantlife/rePlot/blob/master/PLOT_detail.png" width='216px' height='384px' />
-  <img src="https://github.com/pleasantlife/rePlot/blob/master/PLOT_information.png" width='216px' height='384px' />
-  <img src="https://github.com/pleasantlife/rePlot/blob/master/PLOT_share.png" width='216px' height='384px' />
+  <img src="https://github.com/pleasantlife/rePlot/blob/master/PLOT_detail.png" width='216px' height='384px' /> <img src="https://github.com/pleasantlife/rePlot/blob/master/PLOT_information.png" width='216px' height='384px' /> <img src="https://github.com/pleasantlife/rePlot/blob/master/PLOT_share.png" width='216px' height='384px' />
 
   <br>
 
-  <img src="https://github.com/pleasantlife/rePlot/blob/master/PLOT_comment.png" width='216px' height='384px'/>
-  <img src="https://github.com/pleasantlife/rePlot/blob/master/PLOT_map.png" width='216px' height='384px'/>
-  <img src="https://github.com/pleasantlife/rePlot/blob/master/PLOT_profile.png" width='216px' height='384px'/>
+  <img src="https://github.com/pleasantlife/rePlot/blob/master/PLOT_comment.png" width='216px' height='384px'/> <img src="https://github.com/pleasantlife/rePlot/blob/master/PLOT_map.png" width='216px' height='384px'/> <img src="https://github.com/pleasantlife/rePlot/blob/master/PLOT_profile.png" width='216px' height='384px'/>
 
 ## PLOT 구동 영상
 
